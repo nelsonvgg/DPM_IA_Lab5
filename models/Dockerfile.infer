@@ -17,4 +17,12 @@ COPY server.py ./
 EXPOSE 8080
 
 # TODO: Set the command to run the Flask app
-CMD ["python", "train.py"]
+CMD ["python", "server.py"]
+
+#This dockerfile is used to build the image that will be used to serve the model.
+#The image is built using the python:3.9-slim base image.
+#The working directory is set to /app, and the requirements.txt file is copied to the working directory.
+#The Python dependencies are installed using the pip install command.
+#The Flask app (server.py) is copied to the working directory, and the Flask app is run using the python server.py command.
+#This will start the Flask app and make the model available for inference. 
+#The port 8080 is exposed to allow communication with the Flask app.

@@ -1,14 +1,17 @@
+# The provided docker-compose file is designed to orchestrate a multi-container application 
+# involving two services: training and inference
+
 version: '3.8'
 
 services:
   training:
     #Build the container using Dockerfile.train
     build:
-      context: .
+      context: .   # Use the current directory
       dockerfile: Dockerfile.train
     # Use a shared volume to store the trained model
-    volumes:
-      - model_storage:/app/models
+    volumes:   
+      - model_storage:/app/models   # It uses a shared volume named model_storage
     # TODO: Set the command to run the training script
     command: ["python", "train.py"]
     restart: on-failure
@@ -16,11 +19,11 @@ services:
   inference:
     # TODO: Build the container using Dockerfile.infer
     build:
-      context: .
+      context: .   # Use the current directory
       dockerfile: Dockerfile.infer
     #Use a shared volume to load the trained model
     volumes:
-      - model_storage:/app/models
+      - model_storage:/app/models   # It uses a shared volume named model_storage
     # TODO: Expose port 8080 (or any other port) for the Flask app
     ports: 
       - "8080:8080"
@@ -33,3 +36,9 @@ services:
 volumes:
   model_storage:
     driver: local
+
+# Overall, this docker-compose file sets up a workflow where a model is trained in one service
+# and then used for inference in another, 
+# with both services sharing a common volume for model storage. 
+# The inference service is configured to start only after the training service has completed, 
+# ensuring that the model is available for use.

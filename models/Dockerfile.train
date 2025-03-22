@@ -6,11 +6,20 @@ WORKDIR /app
 
 # TODO: Copy the requirements.txt file to the working directory
 COPY requirements.txt ./
-# TODO: Install the Python dependencies
+
+# TODO: Run commands= Install the Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
 # TODO: Copy the training script (train.py) to the working directory
 COPY train.py ./
 
-# TODO: Run the training script that generates the model
+# TODO: Run commands= the training script that generates the model
 CMD ["python", "train.py"]
+
+# This dockerfile is used to build the image that will be used to train the model. 
+# The image is built using the python:3.9-slim base image.
+# The working directory is set to /app, and the requirements.txt file is copied to the working directory. 
+# The Python dependencies are installed using the pip install command. 
+# The training script (train.py) is copied to the working directory, and 
+# the training script is run using the python train.py command. 
+# This will generate the model that will be used for inference.
