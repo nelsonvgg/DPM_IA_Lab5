@@ -22,8 +22,8 @@ services:
     volumes:
       - model_storage:/app/models
     # TODO: Expose port 8080 (or any other port) for the Flask app
-    ports: 8080:8080
-      - 
+    ports: 
+      - "8080:8080"
     #Ensure that the inference service starts after the training service is complete
     depends_on:
       - training

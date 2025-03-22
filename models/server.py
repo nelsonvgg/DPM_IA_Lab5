@@ -5,7 +5,7 @@ import joblib
 app = Flask(__name__)
 
 # TODO: Load the trained model from the shared volume (use the correct path)
-model = joblib.load('/app/model.pkl')
+model = joblib.load('/app/models/model.pkl')
 
 # TODO: Add request method 
 @app.route('/predict', methods=['POST'])

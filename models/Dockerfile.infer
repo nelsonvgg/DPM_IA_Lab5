@@ -5,13 +5,13 @@ FROM python:3.9-slim
 WORKDIR /app
 
 # TODO: Copy the requirements.txt file to the working directory
-COPY requirements.txt .
+COPY requirements.txt ./
 
 # TODO: Install the Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
 # TODO: Copy the Flask app (server.py) to the working directory
-COPY train.py .
+COPY server.py ./
 
 # TODO: Expose port 8080 (or any port) for the Flask app
 EXPOSE 8080
