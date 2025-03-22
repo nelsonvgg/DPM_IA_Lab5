@@ -16,8 +16,8 @@ services:
   inference:
     # TODO: Build the container using Dockerfile.infer
     build:
-      context: 
-      dockerfile: 
+      context: .
+      dockerfile: Dockerfile.infer
     #Use a shared volume to load the trained model
     volumes:
       - model_storage:/app/models
